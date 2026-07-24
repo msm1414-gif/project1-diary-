@@ -1,0 +1,566 @@
+<title>認知脳科学 まとめ ― 第2回・第4回</title>
+<style>
+  :root {
+    --paper: #f7f8fb;
+    --paper-2: #ffffff;
+    --ink: #1a1c22;
+    --ink-soft: #4a4e5a;
+    --ink-faint: #767b88;
+    --line: #e3e6ee;
+    --line-strong: #cdd2e0;
+    --accent: #3d52d5;
+    --accent-soft: #eaedfb;
+    --amber: #b46a12;
+    --amber-soft: #f8eedb;
+    --good: #1f7a4d;
+    --good-soft: #e2f2ea;
+    --shadow: 0 1px 2px rgba(20,25,45,.04), 0 6px 20px rgba(20,25,45,.06);
+    --serif: Georgia, "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+            "Hiragino Sans", "Yu Gothic", "Noto Sans JP", "Meiryo", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #14161c;
+      --paper-2: #1c1f27;
+      --ink: #e9ebf2;
+      --ink-soft: #b3b8c6;
+      --ink-faint: #838a9b;
+      --line: #2a2e3a;
+      --line-strong: #3a3f4f;
+      --accent: #8b9cff;
+      --accent-soft: #23294a;
+      --amber: #e0a24e;
+      --amber-soft: #33290f;
+      --good: #64c99a;
+      --good-soft: #16311f;
+      --shadow: 0 1px 2px rgba(0,0,0,.25), 0 6px 20px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"] {
+    --paper: #f7f8fb; --paper-2:#fff; --ink:#1a1c22; --ink-soft:#4a4e5a;
+    --ink-faint:#767b88; --line:#e3e6ee; --line-strong:#cdd2e0;
+    --accent:#3d52d5; --accent-soft:#eaedfb; --amber:#b46a12; --amber-soft:#f8eedb;
+    --good:#1f7a4d; --good-soft:#e2f2ea;
+    --shadow:0 1px 2px rgba(20,25,45,.04),0 6px 20px rgba(20,25,45,.06);
+  }
+  :root[data-theme="dark"] {
+    --paper:#14161c; --paper-2:#1c1f27; --ink:#e9ebf2; --ink-soft:#b3b8c6;
+    --ink-faint:#838a9b; --line:#2a2e3a; --line-strong:#3a3f4f;
+    --accent:#8b9cff; --accent-soft:#23294a; --amber:#e0a24e; --amber-soft:#33290f;
+    --good:#64c99a; --good-soft:#16311f;
+    --shadow:0 1px 2px rgba(0,0,0,.25),0 6px 20px rgba(0,0,0,.35);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--sans); line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---- top bar ---- */
+  header {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--paper) 86%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar {
+    max-width: 900px; margin: 0 auto; padding: 14px 22px;
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .brand { display: flex; flex-direction: column; margin-right: auto; }
+  .brand .eyebrow {
+    font-family: var(--serif); font-style: italic;
+    font-size: 12px; letter-spacing: .04em; color: var(--accent);
+  }
+  .brand h1 { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: .01em; }
+  nav { display: flex; gap: 4px; background: var(--line); padding: 4px; border-radius: 10px; }
+  nav button {
+    font-family: var(--sans); font-size: 13px; font-weight: 600;
+    border: 0; background: transparent; color: var(--ink-soft);
+    padding: 7px 13px; border-radius: 7px; cursor: pointer;
+    transition: background .15s, color .15s;
+  }
+  nav button:hover { color: var(--ink); }
+  nav button[aria-selected="true"] { background: var(--paper-2); color: var(--accent); box-shadow: var(--shadow); }
+  nav button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ---- content ---- */
+  main { max-width: 760px; margin: 0 auto; padding: 40px 22px 96px; }
+  .panel { display: none; }
+  .panel.active { display: block; animation: fade .25s ease; }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .panel.active { animation: none; } }
+
+  .lead {
+    display: flex; gap: 18px; align-items: baseline;
+    padding-bottom: 22px; margin-bottom: 30px; border-bottom: 2px solid var(--line-strong);
+  }
+  .lead .num { font-family: var(--serif); font-size: 46px; line-height: 1; color: var(--accent); font-weight: 700; }
+  .lead .num small { display:block; font-size: 12px; font-style: italic; color: var(--ink-faint); letter-spacing: .05em; }
+  .lead h2 { margin: 0 0 4px; font-size: 24px; letter-spacing: .01em; text-wrap: balance; }
+  .lead p { margin: 0; font-size: 14px; color: var(--ink-soft); }
+
+  section.block { margin: 34px 0; }
+  section.block > h3 {
+    font-size: 18px; margin: 0 0 14px; padding-left: 12px;
+    border-left: 4px solid var(--accent); line-height: 1.3; text-wrap: balance;
+  }
+  h4 { font-size: 15px; margin: 20px 0 8px; color: var(--ink); }
+  p { margin: 10px 0; }
+  ul { margin: 10px 0; padding-left: 1.3em; }
+  li { margin: 5px 0; }
+  li::marker { color: var(--accent); }
+  strong { color: var(--ink); font-weight: 700; }
+  .term { color: var(--amber); font-weight: 700; }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px;
+    background: var(--paper-2); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow);
+  }
+  thead th { background: var(--accent-soft); color: var(--accent); text-align: left; font-weight: 700; }
+  th, td { padding: 9px 13px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tbody tr:last-child td { border-bottom: 0; }
+  td:first-child { font-weight: 600; white-space: nowrap; }
+  .wrap { overflow-x: auto; }
+
+  .callout {
+    background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+    border-radius: 10px; padding: 12px 16px; margin: 16px 0; font-size: 14px;
+  }
+  .callout.key { background: var(--amber-soft); border-color: color-mix(in srgb, var(--amber) 35%, transparent); }
+  .callout .tag {
+    display: inline-block; font-family: var(--serif); font-style: italic;
+    font-size: 12px; color: var(--amber); margin-right: 6px;
+  }
+  .flow {
+    font-family: var(--serif); font-size: 14px; text-align: center;
+    background: var(--paper-2); border: 1px dashed var(--line-strong);
+    border-radius: 10px; padding: 14px; margin: 14px 0; color: var(--ink-soft);
+    overflow-x: auto; white-space: nowrap;
+  }
+  .flow b { color: var(--accent); font-style: normal; }
+
+  /* ---- quiz ---- */
+  .quiz-intro { color: var(--ink-soft); font-size: 14px; margin-bottom: 8px; }
+  .quiz-tools { display: flex; gap: 10px; margin: 14px 0 26px; flex-wrap: wrap; }
+  .quiz-tools button {
+    font-family: var(--sans); font-size: 13px; font-weight: 600; cursor: pointer;
+    border: 1px solid var(--line-strong); background: var(--paper-2); color: var(--ink-soft);
+    padding: 7px 14px; border-radius: 8px; transition: .15s;
+  }
+  .quiz-tools button:hover { border-color: var(--accent); color: var(--accent); }
+  .quiz-tools button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .qgroup { font-family: var(--serif); font-style: italic; color: var(--ink-faint); font-size: 13px; margin: 26px 0 10px; letter-spacing: .04em; }
+  .qa {
+    background: var(--paper-2); border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px 16px; margin: 10px 0; box-shadow: var(--shadow); cursor: pointer;
+    transition: border-color .15s;
+  }
+  .qa:hover { border-color: var(--line-strong); }
+  .qa:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .qa .q { display: flex; gap: 10px; font-size: 14.5px; }
+  .qa .q .n { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+  .qa .a {
+    margin-top: 0; max-height: 0; overflow: hidden; opacity: 0;
+    transition: max-height .28s ease, opacity .2s, margin-top .2s;
+    font-size: 14px; color: var(--good);
+    border-top: 1px dashed transparent;
+  }
+  .qa[aria-expanded="true"] .a {
+    max-height: 320px; opacity: 1; margin-top: 10px; padding-top: 10px;
+    border-top-color: var(--line);
+  }
+  .qa .a b { color: var(--good); background: var(--good-soft); padding: 1px 5px; border-radius: 4px; }
+  @media (prefers-reduced-motion: reduce) { .qa .a { transition: none; } }
+
+  footer { max-width: 760px; margin: 0 auto; padding: 30px 22px 60px; color: var(--ink-faint); font-size: 12.5px; border-top: 1px solid var(--line); }
+</style>
+
+<header>
+  <div class="bar">
+    <div class="brand">
+      <span class="eyebrow">Cognitive Neuroscience · 2026S</span>
+      <h1>認知脳科学 まとめノート</h1>
+    </div>
+    <nav role="tablist" aria-label="セクション">
+      <button role="tab" aria-selected="true" data-target="l02">第2回 導入</button>
+      <button role="tab" aria-selected="false" data-target="l04">第4回 視覚I</button>
+      <button role="tab" aria-selected="false" data-target="quiz">一問一答</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- ============ 第2回 ============ -->
+  <div class="panel active" id="l02" role="tabpanel">
+    <div class="lead">
+      <div class="num">02<small>LECTURE</small></div>
+      <div>
+        <h2>導入・序論 ― 認知脳科学とは何か</h2>
+        <p>心を「どの学問を土台に、どんな視点で」扱うのかを俯瞰する回。</p>
+      </div>
+    </div>
+
+    <section class="block">
+      <h3>1. 認知脳科学とは ― 3つの学問の交差点</h3>
+      <div class="wrap"><table>
+        <thead><tr><th>学問</th><th>歴史的な由来</th></tr></thead>
+        <tbody>
+          <tr><td>心理学</td><td>人文学・哲学</td></tr>
+          <tr><td>脳科学</td><td>生理学・神経科学・生物学</td></tr>
+          <tr><td>認知科学</td><td>計算機科学・情報学</td></tr>
+        </tbody>
+      </table></div>
+      <p>これら3つが<strong>相互作用した形</strong>とも言える。本講義は特に<strong>生理学・神経科学・生物学</strong>寄りの立場。</p>
+      <div class="callout"><span class="tag">計測</span>「食べた」「見た」など行動は<strong>計測可能</strong>だが、「食べたい」「甘そう」といった内的状態は<strong>計測困難</strong>なことが多い。</div>
+    </section>
+
+    <section class="block">
+      <h3>2. こころと身体の問題 ― 一元論と二元論</h3>
+      <div class="wrap"><table>
+        <thead><tr><th>立場</th><th>主張</th></tr></thead>
+        <tbody>
+          <tr><td>一元論</td><td>こころは脳（身体）が作り出す</td></tr>
+          <tr><td>二元論</td><td>こころと脳は別物である</td></tr>
+        </tbody>
+      </table></div>
+      <h4>デカルトの心身二元論</h4>
+      <ul>
+        <li><span class="term">動物機械論</span>：動物には心が介在しないと考えた。</li>
+        <li>心は本人しか観察できない（内観の問題）。</li>
+        <li><span class="term">松果体</span>を通じて身体と心が相互作用すると考えた。</li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <h3>3. 認知科学的立場 ― コンピューターとのアナロジー</h3>
+      <p><strong>認知</strong>（cognition）を<strong>計算・演算</strong>（computation）と捉える。</p>
+      <div class="wrap"><table>
+        <thead><tr><th>脳の機能</th><th>コンピューターの対応</th></tr></thead>
+        <tbody>
+          <tr><td>固定記憶</td><td>HDD / SSD</td></tr>
+          <tr><td>作業記憶</td><td>RAM（メモリー）</td></tr>
+          <tr><td>中央実行系</td><td>CPU</td></tr>
+        </tbody>
+      </table></div>
+      <h4>古典的認知モデル</h4>
+      <ul>
+        <li><span class="term">二重貯蔵モデル</span>（Atkinson &amp; Shiffrin, 1968）：感覚貯蔵庫 → 短期貯蔵庫 → 長期貯蔵庫。</li>
+        <li><span class="term">ワーキングメモリの古典モデル</span>（Baddeley &amp; Hitch, 1974 / Baddeley, 2000）：中央実行系・視空間スケッチパッド・エピソードバッファ・音韻ループ。</li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <h3>4. 生物学的立場</h3>
+      <ul>
+        <li>基本は<strong>一元論</strong>。還元的になりすぎず、行動・心理現象の一般法則（機能的解釈）へ向かう。</li>
+        <li>神経系の知見：電気的情報伝達／感覚・運動情報の伝達原理の発見。</li>
+        <li>解剖学の知見：脳の部分的切除、<span class="term">Paul Broca</span>（1824–1880）。</li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <h3>5. 自然淘汰と進化</h3>
+      <p>身体構造は<strong>進化的原理</strong>（自然淘汰 natural selection）により設計されている。</p>
+      <div class="callout key"><span class="tag">相同</span>ヒト・コウモリ・クジラ・イヌの前肢は、<strong>形は違うが由来は同じ</strong>＝<span class="term">相同</span>。脳・神経系でも同じ相同論が成り立つ。</div>
+    </section>
+
+    <section class="block">
+      <h3>6. 霊長類・人類進化</h3>
+      <h4>霊長類の特徴</h4>
+      <ul>
+        <li>樹上への適応／手指の把握力（平爪）</li>
+        <li>眼窩軸の収斂 → <strong>立体視</strong>の能力上昇</li>
+        <li>昼行性への適応（原猿＝夜行 → 真猿＝昼行）</li>
+        <li><span class="term">色覚の再獲得</span>／嗅覚の退行</li>
+      </ul>
+      <h4>進化の流れ</h4>
+      <ul>
+        <li>初期進化は<strong>約6500万年前（65 Mya）</strong>から。原始霊長類は夜行性の小動物。</li>
+        <li>現生人類は <strong>Homo sapiens のみ</strong>。他は化石人類として絶滅。</li>
+        <li>Homo属の出現とともに脳が拡大 → 機能的説明として<span class="term">社会認知の説</span>が有名。</li>
+      </ul>
+    </section>
+
+    <div class="callout"><span class="tag">まとめ</span>認知脳科学は心理学・生物学・情報学の知見を取り込む。<strong>還元的理解だけでなく機能面</strong>を考慮し、<strong>適応を生む進化的原理</strong>を理解することが重要。</div>
+  </div>
+
+  <!-- ============ 第4回 ============ -->
+  <div class="panel" id="l04" role="tabpanel">
+    <div class="lead">
+      <div class="num">04<small>LECTURE</small></div>
+      <div>
+        <h2>視覚 I ― 光の受容から色知覚まで</h2>
+        <p>光が眼に入り、網膜で受容され、脳で「色・形」として知覚されるまで。</p>
+      </div>
+    </div>
+
+    <section class="block">
+      <h3>1. 感覚と知覚</h3>
+      <div class="wrap"><table>
+        <thead><tr><th>用語</th><th>定義</th></tr></thead>
+        <tbody>
+          <tr><td>感覚<br>sensation</td><td>刺激を検知する<strong>神経系の細胞活動</strong>を介した<strong>物理的な過程</strong></td></tr>
+          <tr><td>知覚<br>perception</td><td><strong>意識にのぼる経験</strong>。感覚情報の<strong>解釈</strong>を伴い、中枢神経系ニューロンを必要とする</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="block">
+      <h3>2. 光の物理特性</h3>
+      <div class="callout key"><span class="tag">数値</span>可視光の波長範囲＝<strong>380 〜 760 nm</strong>。</div>
+      <h4>光の色の3次元（HSV）</h4>
+      <div class="wrap"><table>
+        <thead><tr><th>次元</th><th>意味</th></tr></thead>
+        <tbody>
+          <tr><td>色相 Hue</td><td>波長。知覚される色相を決める</td></tr>
+          <tr><td>彩度 Saturation</td><td>波長の「純粋さ」。単一か混色か</td></tr>
+          <tr><td>明度 Value</td><td>光の強さ</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="block">
+      <h3>3. 眼球と盲点</h3>
+      <ul>
+        <li><strong>網膜（retina）</strong>上で焦点を結ぶ。数百万の視細胞がある。</li>
+        <li>視神経＝脳神経12対（末梢神経）の一つ。中枢神経系に分類されることも（発生学的由来が異なる／「脳の一部」）。</li>
+        <li><span class="term">視神経円盤（optic disk）</span>には視細胞がない＝<strong>盲点</strong>。網膜の中心＝<span class="term">中心窩（fovea）</span>。</li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <h3>4. 網膜の層構造 ★重要</h3>
+      <p>光は網膜を<strong>奥まで通り抜けてから</strong>視細胞に届く。</p>
+      <h4>① 視細胞層</h4>
+      <div class="wrap"><table>
+        <thead><tr><th>視細胞</th><th>特徴</th></tr></thead>
+        <tbody>
+          <tr><td>桿体 Rod</td><td>高感度・<strong>暗所</strong>で機能・色を識別しない（白黒）・<strong>中心窩にない</strong></td></tr>
+          <tr><td>錐体 Cone</td><td>鈍感・<strong>明所</strong>で機能・<strong>中心窩にある</strong></td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout"><span class="tag">錐体3種</span><strong>S錐体</strong>＝短波長＝青／<strong>M錐体</strong>＝中波長＝緑／<strong>L錐体</strong>＝長波長＝赤</div>
+      <h4>② 双極細胞層（中継・調整）</h4>
+      <div class="wrap"><table>
+        <thead><tr><th>細胞</th><th>役割</th></tr></thead>
+        <tbody>
+          <tr><td>双極細胞</td><td>中継処理。複数視細胞の入力統合・感度調整</td></tr>
+          <tr><td>水平細胞</td><td>空間処理。<span class="term">側抑制</span>＝コントラスト調整</td></tr>
+          <tr><td>アマクリン細胞</td><td>時間処理。遅延回路＝時間変化の符号化</td></tr>
+        </tbody>
+      </table></div>
+      <h4>③ 神経節細胞層</h4>
+      <p>脳の他の領域へ情報を伝達する（出力）。</p>
+    </section>
+
+    <section class="block">
+      <h3>5. 網膜内の電位変化</h3>
+      <div class="wrap"><table>
+        <thead><tr><th>細胞</th><th>光が当たると…</th></tr></thead>
+        <tbody>
+          <tr><td>視細胞</td><td><strong>過分極</strong>（膜電位が下がる）。グルタメート放出が<strong>減る</strong></td></tr>
+          <tr><td>双極細胞</td><td>伝達物質が減ると<strong>脱分極</strong>。伝達物質を多量放出</td></tr>
+          <tr><td>神経節細胞</td><td>興奮し<strong>活動電位</strong>が発生（脳へ）</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="block">
+      <h3>6. 受容野（receptive field）★重要</h3>
+      <ul>
+        <li>あるニューロンが網膜の<strong>どの範囲</strong>に反応するか＝細胞の「担当エリア」。</li>
+        <li>視細胞は数百万だが神経節細胞は少ない → 情報は<strong>空間的に集約</strong>される。</li>
+        <li><strong>中心視</strong>＝受容野が狭く視力が高い／<strong>周辺視</strong>＝受容野が広く視力が低い。</li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <h3>7. 視覚経路（visual pathway）★重要</h3>
+      <div class="flow">視神経 → 視交叉 → <b>外側膝状体 (LGN)</b> → <b>一次視覚野 (V1)</b> → 高次視覚野</div>
+      <ul>
+        <li><span class="term">視交叉</span>：網膜<strong>内側（鼻側）</strong>は交叉して反対側へ／<strong>外側（耳側）</strong>は交叉せず同側へ。</li>
+        <li><strong>LGN</strong>＝背側核。視床の一部。<strong>V1</strong>＝後頭葉。</li>
+      </ul>
+      <h4>LGN以外の経路</h4>
+      <div class="wrap"><table>
+        <thead><tr><th>経路</th><th>役割</th></tr></thead>
+        <tbody>
+          <tr><td>上丘（SC）</td><td>視覚性反射・眼球運動・注意</td></tr>
+          <tr><td>視蓋前野</td><td><strong>瞳孔反射（対光反射）</strong></td></tr>
+          <tr><td>視床下部</td><td><strong>サーカディアンリズム</strong>調整</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="block">
+      <h3>8. LGNの3系統 ★頻出</h3>
+      <div class="wrap"><table>
+        <thead><tr><th>特性</th><th>大細胞系</th><th>小細胞系</th><th>顆粒細胞系</th></tr></thead>
+        <tbody>
+          <tr><td>色</td><td>なし</td><td>赤・緑</td><td>青</td></tr>
+          <tr><td>空間解像度</td><td>低い</td><td><strong>高い</strong></td><td>低い</td></tr>
+          <tr><td>時間解像度</td><td><strong>高い（一過性）</strong></td><td>低い（持続性）</td><td>低い（持続性）</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="block">
+      <h3>9. V1の構造と2経路</h3>
+      <ul>
+        <li>6層構造（LGNの層とは対応しない）。<strong>モジュール</strong>＝柱状構造（V1に約15万ニューロン・約2500モジュール）。</li>
+        <li><span class="term">ブロブ（blob）</span>＝色に感受性／<strong>インターブロブ</strong>＝方位・動き・空間周波数・両眼視差。</li>
+      </ul>
+      <div class="wrap"><table>
+        <thead><tr><th>経路</th><th>認識</th><th>内容</th></tr></thead>
+        <tbody>
+          <tr><td>背側経路</td><td><strong>Where</strong></td><td>物体の位置・動き</td></tr>
+          <tr><td>腹側経路</td><td><strong>What</strong></td><td>形・色・大きさ・テクスチャ</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="block">
+      <h3>10. 明暗の知覚と側抑制</h3>
+      <div class="wrap"><table>
+        <thead><tr><th>型</th><th>反応</th></tr></thead>
+        <tbody>
+          <tr><td>ON型</td><td>中心部の光で興奮／周辺部で抑制</td></tr>
+          <tr><td>OFF型</td><td>周辺部の光で興奮／中心部で抑制</td></tr>
+          <tr><td>ON/OFF型</td><td>光のON時・OFF時に一過性反応</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout key"><span class="tag">側抑制</span>境界ではON領域の発火に対し周辺OFF抑制が小さく、興奮が増大 → <strong>境界が強調されて見える</strong>。</div>
+    </section>
+
+    <section class="block">
+      <h3>11. 色の符号化 ― 三色色覚と反対色</h3>
+      <ul>
+        <li>疑問：Coneにない「黄」がなぜ原色に感じるか → <strong>黄を初期段階（神経節細胞レベル）で定義・計算</strong>するため。</li>
+        <li>神経節細胞では反対色ペアで処理：<span class="term">赤-緑型</span>・<span class="term">黄-青型</span>。</li>
+      </ul>
+      <div class="wrap"><table>
+        <thead><tr><th>段階</th><th>説</th></tr></thead>
+        <tbody>
+          <tr><td>視細胞</td><td><strong>3原色説</strong>（波長を赤・緑・青に分解）</td></tr>
+          <tr><td>神経節細胞以降</td><td><strong>反対色説</strong>（赤↔緑・青↔黄・白↔黒）</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="block">
+      <h3>12. 負の残像（negative afterimage）</h3>
+      <p>刺激と<strong>補色</strong>が見える現象。<strong>網膜神経節細胞の発火頻度の順応</strong>で説明する。</p>
+      <ul>
+        <li>長時間（〜30秒）興奮 or 抑制 → <strong>リバウンド（反動）効果</strong>。</li>
+        <li>白画面で順応した経路だけ弱く反応 → 興奮・抑制バランスが崩れ補色の残像が生じる。</li>
+      </ul>
+    </section>
+
+    <div class="callout"><span class="tag">まとめ</span>色の波長情報を高次へ渡すのは<strong>小細胞系・顆粒細胞系（What）</strong>。<strong>大細胞系（Where）</strong>は色を渡さず、明暗・動きを速く伝える。</div>
+  </div>
+
+  <!-- ============ 一問一答 ============ -->
+  <div class="panel" id="quiz" role="tabpanel">
+    <div class="lead">
+      <div class="num">Q&amp;A<small>SELF-TEST</small></div>
+      <div>
+        <h2>一問一答</h2>
+        <p class="quiz-intro">カードをクリック（またはEnter）で答えを表示。自己テストに。</p>
+      </div>
+    </div>
+    <div class="quiz-tools">
+      <button id="showAll">すべて表示</button>
+      <button id="hideAll">すべて隠す</button>
+    </div>
+    <div id="quizList"></div>
+  </div>
+</main>
+
+<footer>認知脳科学 2026S ／ 第2回・第4回の試作版。全11回そろえば横断テーマ整理・Anki用CSVも出力できます。</footer>
+
+<script>
+  // ---- theme sync (respect toggle stamped on :root) ----
+  // tokens already handle prefers-color-scheme + data-theme; nothing needed here.
+
+  // ---- tabs ----
+  const tabs = document.querySelectorAll('nav button');
+  const panels = document.querySelectorAll('.panel');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.setAttribute('aria-selected', x === t));
+    panels.forEach(p => p.classList.toggle('active', p.id === t.dataset.target));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }));
+
+  // ---- quiz data ----
+  const QUIZ = [
+    ['第2回 導入・序論', [
+      ['認知脳科学を構成する3学問と由来は？','心理学（人文学・哲学）／脳科学（生理学・神経科学・生物学）／認知科学（計算機科学・情報学）'],
+      ['一元論と二元論の違いは？','一元論＝こころは脳が作り出す／二元論＝こころと脳は別物'],
+      ['デカルトが心身の相互作用の場とした部位は？','松果体'],
+      ['「動物に心は介在しない」という考えを何と呼ぶ？','動物機械論'],
+      ['固定記憶・作業記憶・中央実行系の計算機対応は？','HDD/SSD ／ RAM ／ CPU'],
+      ['感覚貯蔵庫→短期→長期のモデルと提唱者は？','二重貯蔵モデル（Atkinson & Shiffrin, 1968）'],
+      ['ワーキングメモリ古典モデルの構成要素は？','中央実行系・視空間スケッチパッド・エピソードバッファ・音韻ループ'],
+      ['前肢のように形は違うが由来が同じ構造を何と呼ぶ？','相同（そうどう）'],
+      ['霊長類の特徴を4つ挙げよ。','樹上への適応／把握力（平爪）／立体視／色覚の再獲得（＋嗅覚の退行）'],
+      ['初期霊長類の進化はおよそ何年前から？','約6500万年前（65 Mya）'],
+      ['現生人類の学名と、絶滅した人類の呼称は？','Homo sapiens ／ 化石人類'],
+      ['Homo属の脳拡大の機能的説明で有名な説は？','社会認知の説'],
+    ]],
+    ['第4回 視覚 I', [
+      ['感覚と知覚の違いは？','感覚＝神経系の細胞活動を介した物理的過程／知覚＝意識にのぼる、解釈を伴う過程（中枢神経系が必要）'],
+      ['可視光の波長範囲は？','380〜760 nm'],
+      ['光の色の3次元（HSV）とは？','色相（Hue＝波長）／彩度（Saturation＝純粋さ）／明度（Value＝強さ）'],
+      ['盲点にあたる、視細胞がない部位は？','視神経円盤（optic disk）'],
+      ['網膜の中心で視力が最も高い部位は？','中心窩（fovea）'],
+      ['桿体と錐体の機能的違いは？','桿体＝暗所・高感度・白黒・中心窩にない／錐体＝明所・色識別・中心窩にある'],
+      ['錐体3タイプと対応する色は？','S＝青（短波長）／M＝緑（中波長）／L＝赤（長波長）'],
+      ['コントラストを高める、水平細胞の働きは？','側抑制'],
+      ['光が当たると視細胞の膜電位と伝達物質はどうなる？','過分極（膜電位低下）。グルタメート放出が減る'],
+      ['神経節細胞で脳へ情報が伝わるとき発生するものは？','活動電位'],
+      ['ニューロンが網膜のどの範囲に反応するかを表す概念は？','受容野（receptive field）'],
+      ['中心視と周辺視で視力が違う理由は？','中心視は受容野が狭く視力が高い／周辺視は受容野が広く視力が低い'],
+      ['視覚経路を順に並べよ。','視神経→視交叉→外側膝状体(LGN)→一次視覚野(V1)→高次視覚野'],
+      ['視交叉で交叉するのは鼻側か耳側か？','内側（鼻側）が交叉して反対側へ。外側（耳側）は同側へ'],
+      ['瞳孔の対光反射に関わる経路は？','視蓋前野経路'],
+      ['サーカディアンリズム調整に関わる経路は？','視床下部経路'],
+      ['LGNで色情報を持たない系は？','大細胞系（小細胞系＝赤緑、顆粒細胞系＝青）'],
+      ['大細胞系と小細胞系の空間・時間解像度は？','大細胞系＝空間低・時間高（一過性）／小細胞系＝空間高・時間低（持続性）'],
+      ['V1のブロブは何に感受性を持つ？','色（インターブロブは方位・動き・空間周波数・両眼視差）'],
+      ['背側経路と腹側経路が担う認識は？','背側＝Where（位置・動き）／腹側＝What（形・色・大きさ）'],
+      ['ON型神経節細胞の反応は？','受容野中心部の光で興奮／周辺部で抑制'],
+      ['境界で明暗・色が強調される仕組みは？','側抑制（境界ではON発火に対し周辺OFF抑制が小さく興奮が増大）'],
+      ['色覚は視細胞と神経節細胞以降で何説か？','視細胞＝3原色説／神経節細胞以降＝反対色説'],
+      ['反対色の3ペアは？','赤↔緑・青↔黄・白↔黒'],
+      ['Coneにない黄が原色に感じるのはなぜ？','黄を初期段階（神経節細胞レベル）で定義・計算するため'],
+      ['負の残像で見えるものと、その原因は？','補色が見える。網膜神経節細胞の発火頻度の順応（興奮→リバウンド抑制）'],
+    ]],
+  ];
+
+  const list = document.getElementById('quizList');
+  let n = 0;
+  QUIZ.forEach(([group, items]) => {
+    const h = document.createElement('div');
+    h.className = 'qgroup'; h.textContent = group;
+    list.appendChild(h);
+    items.forEach(([q, a]) => {
+      n++;
+      const card = document.createElement('div');
+      card.className = 'qa'; card.tabIndex = 0; card.setAttribute('aria-expanded', 'false');
+      card.innerHTML = '<div class="q"><span class="n">' + n + '.</span><span>' + q + '</span></div>' +
+                       '<div class="a"><b>' + a + '</b></div>';
+      const toggle = () => card.setAttribute('aria-expanded', card.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
+      card.addEventListener('click', toggle);
+      card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+      list.appendChild(card);
+    });
+  });
+  document.getElementById('showAll').addEventListener('click', () =>
+    document.querySelectorAll('.qa').forEach(c => c.setAttribute('aria-expanded', 'true')));
+  document.getElementById('hideAll').addEventListener('click', () =>
+    document.querySelectorAll('.qa').forEach(c => c.setAttribute('aria-expanded', 'false')));
+</script>
