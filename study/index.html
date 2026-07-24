@@ -176,6 +176,23 @@
   .qa .a b { color: var(--good); background: var(--good-soft); padding: 1px 5px; border-radius: 4px; }
   @media (prefers-reduced-motion: reduce) { .qa .a { transition: none; } }
 
+  /* ---- figures ---- */
+  figure.fig {
+    margin: 18px 0; padding: 16px; background: var(--paper-2);
+    border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow);
+  }
+  figure.fig svg { display: block; width: 100%; height: auto; }
+  figure.fig figcaption {
+    margin-top: 10px; font-size: 12.5px; color: var(--ink-faint);
+    font-family: var(--serif); font-style: italic; text-align: center;
+  }
+  .svg-ink { fill: var(--ink); }
+  .svg-soft { fill: var(--ink-soft); }
+  .svg-faint { fill: var(--ink-faint); }
+  .s-stroke { stroke: var(--line-strong); }
+  .s-accent { stroke: var(--accent); }
+  text { font-family: var(--sans); }
+
   footer { max-width: 760px; margin: 0 auto; padding: 30px 22px 60px; color: var(--ink-faint); font-size: 12.5px; border-top: 1px solid var(--line); }
 </style>
 
@@ -251,6 +268,48 @@
         <li><span class="term">二重貯蔵モデル</span>（Atkinson &amp; Shiffrin, 1968）：感覚貯蔵庫 → 短期貯蔵庫 → 長期貯蔵庫。</li>
         <li><span class="term">ワーキングメモリの古典モデル</span>（Baddeley &amp; Hitch, 1974 / Baddeley, 2000）：中央実行系・視空間スケッチパッド・エピソードバッファ・音韻ループ。</li>
       </ul>
+      <figure class="fig">
+        <svg viewBox="0 0 560 110" role="img" aria-label="二重貯蔵モデル">
+          <g class="svg-ink" font-size="11" text-anchor="middle" font-weight="700">
+            <rect x="12" y="35" width="90" height="42" rx="8" fill="var(--accent-soft)" class="s-accent" stroke-width="1.5"/>
+            <text x="57" y="52">感覚</text><text x="57" y="66">貯蔵庫</text>
+            <rect x="172" y="35" width="90" height="42" rx="8" fill="var(--accent-soft)" class="s-accent" stroke-width="1.5"/>
+            <text x="217" y="52">短期</text><text x="217" y="66">貯蔵庫</text>
+            <rect x="335" y="35" width="90" height="42" rx="8" fill="var(--accent-soft)" class="s-accent" stroke-width="1.5"/>
+            <text x="380" y="52">長期</text><text x="380" y="66">貯蔵庫</text>
+          </g>
+          <g class="s-accent" stroke-width="2" fill="none">
+            <line x1="102" y1="56" x2="168" y2="56"/><line x1="262" y1="50" x2="331" y2="50"/>
+          </g>
+          <line x1="331" y1="62" x2="266" y2="62" class="s-stroke" stroke-width="1.5"/>
+          <polygon points="168,56 160,52 160,60" fill="var(--accent)"/>
+          <polygon points="331,50 323,46 323,54" fill="var(--accent)"/>
+          <polygon points="266,62 274,58 274,66" class="svg-faint"/>
+          <g font-size="9" class="svg-faint" text-anchor="middle">
+            <text x="135" y="46">注意</text><text x="297" y="40">リハーサル</text>
+          </g>
+          <text x="500" y="58" font-size="10" class="svg-faint" text-anchor="middle">Atkinson &amp;<tspan x="500" dy="12">Shiffrin '68</tspan></text>
+        </svg>
+        <figcaption>二重貯蔵モデル：感覚→(注意)→短期→(リハーサル)→長期。短期が長期の前段階。</figcaption>
+      </figure>
+      <figure class="fig">
+        <svg viewBox="0 0 560 150" role="img" aria-label="ワーキングメモリの古典モデル">
+          <rect x="200" y="12" width="160" height="34" rx="8" fill="var(--amber-soft)" class="s-stroke" stroke-width="1.5"/>
+          <text x="280" y="34" font-size="12" text-anchor="middle" class="svg-ink" font-weight="700">中央実行系</text>
+          <g class="s-stroke" stroke-width="1.5">
+            <line x1="240" y1="46" x2="90" y2="92"/><line x1="280" y1="46" x2="280" y2="92"/><line x1="320" y1="46" x2="470" y2="92"/>
+          </g>
+          <g font-size="11" text-anchor="middle" class="svg-ink" font-weight="700">
+            <rect x="20" y="94" width="140" height="40" rx="8" fill="var(--accent-soft)" class="s-accent" stroke-width="1.2"/>
+            <text x="90" y="112">視空間</text><text x="90" y="126">スケッチパッド</text>
+            <rect x="210" y="94" width="140" height="40" rx="8" fill="var(--accent-soft)" class="s-accent" stroke-width="1.2"/>
+            <text x="280" y="112">エピソード</text><text x="280" y="126">バッファ</text>
+            <rect x="400" y="94" width="140" height="40" rx="8" fill="var(--accent-soft)" class="s-accent" stroke-width="1.2"/>
+            <text x="470" y="118">音韻ループ</text>
+          </g>
+        </svg>
+        <figcaption>ワーキングメモリ古典モデル：中央実行系が3つの従属系を制御する。</figcaption>
+      </figure>
     </section>
 
     <section class="block">
@@ -335,6 +394,49 @@
     <section class="block">
       <h3>4. 網膜の層構造 ★重要</h3>
       <p>光は網膜を<strong>奥まで通り抜けてから</strong>視細胞に届く。</p>
+      <figure class="fig">
+        <svg viewBox="0 0 560 250" role="img" aria-label="網膜の層構造の図">
+          <!-- light in -->
+          <text x="18" y="30" font-size="13" font-weight="700" fill="#c9a227">光</text>
+          <line x1="40" y1="26" x2="120" y2="26" stroke="#c9a227" stroke-width="2"/>
+          <polygon points="120,26 112,22 112,30" fill="#c9a227"/>
+          <line x1="130" y1="26" x2="210" y2="26" stroke="#c9a227" stroke-width="2" stroke-dasharray="4 3"/>
+          <line x1="220" y1="26" x2="300" y2="26" stroke="#c9a227" stroke-width="2" stroke-dasharray="4 3"/>
+          <line x1="310" y1="26" x2="430" y2="26" stroke="#c9a227" stroke-width="2" stroke-dasharray="4 3"/>
+          <polygon points="430,26 422,22 422,30" fill="#c9a227"/>
+          <!-- three layer bands -->
+          <g>
+            <rect x="45" y="45" width="150" height="150" rx="8" fill="var(--accent-soft)" class="s-stroke" stroke-width="1"/>
+            <rect x="205" y="45" width="150" height="150" rx="8" fill="var(--accent-soft)" class="s-stroke" stroke-width="1"/>
+            <rect x="365" y="45" width="150" height="150" rx="8" fill="var(--accent-soft)" class="s-stroke" stroke-width="1"/>
+          </g>
+          <!-- ganglion cells -->
+          <g fill="#7b61c9">
+            <circle cx="90" cy="95" r="12"/><circle cx="150" cy="95" r="12"/>
+          </g>
+          <line x1="90" y1="107" x2="120" y2="150" class="s-stroke"/>
+          <line x1="150" y1="107" x2="120" y2="150" class="s-stroke"/>
+          <!-- bipolar / horizontal / amacrine -->
+          <g fill="#2f9e5b"><ellipse cx="245" cy="90" rx="10" ry="14"/><ellipse cx="315" cy="90" rx="10" ry="14"/></g>
+          <g fill="#3b6fd6"><rect x="235" y="140" width="20" height="9" rx="4"/><rect x="305" y="140" width="20" height="9" rx="4"/></g>
+          <!-- photoreceptors -->
+          <g fill="#d1494b">
+            <rect x="410" y="70" width="10" height="34" rx="4"/><rect x="435" y="70" width="10" height="34" rx="4"/>
+            <rect x="460" y="70" width="10" height="34" rx="4"/><rect x="485" y="70" width="10" height="34" rx="4"/>
+          </g>
+          <!-- signal back to brain -->
+          <line x1="45" y1="215" x2="470" y2="215" class="s-accent" stroke-width="2" stroke-dasharray="5 4"/>
+          <polygon points="45,215 55,210 55,220" fill="var(--accent)"/>
+          <text x="60" y="240" font-size="12" font-weight="700" fill="var(--accent)">脳へ（視神経）</text>
+          <!-- labels -->
+          <text x="120" y="182" font-size="12" text-anchor="middle" class="svg-ink" font-weight="700">神経節細胞層</text>
+          <text x="280" y="182" font-size="12" text-anchor="middle" class="svg-ink" font-weight="700">双極細胞層</text>
+          <text x="440" y="182" font-size="12" text-anchor="middle" class="svg-ink" font-weight="700">視細胞層</text>
+          <text x="280" y="120" font-size="10" text-anchor="middle" class="svg-faint">双極/水平/アマクリン</text>
+          <text x="452" y="120" font-size="10" text-anchor="middle" class="svg-faint">桿体・錐体</text>
+        </svg>
+        <figcaption>光は手前の層を通り抜け、いちばん奥の視細胞に届く。信号は逆向き（視細胞→双極→神経節→脳）に流れる。</figcaption>
+      </figure>
       <h4>① 視細胞層</h4>
       <div class="wrap"><table>
         <thead><tr><th>視細胞</th><th>特徴</th></tr></thead>
@@ -376,11 +478,62 @@
         <li>視細胞は数百万だが神経節細胞は少ない → 情報は<strong>空間的に集約</strong>される。</li>
         <li><strong>中心視</strong>＝受容野が狭く視力が高い／<strong>周辺視</strong>＝受容野が広く視力が低い。</li>
       </ul>
+      <figure class="fig">
+        <svg viewBox="0 0 480 210" role="img" aria-label="ON中心型とOFF中心型の受容野">
+          <!-- ON-center -->
+          <circle cx="120" cy="95" r="62" fill="#d1494b" opacity="0.14" stroke="#d1494b" stroke-width="1.5"/>
+          <circle cx="120" cy="95" r="30" fill="var(--accent)" opacity="0.85"/>
+          <text x="120" y="100" font-size="26" fill="#fff" text-anchor="middle" font-weight="700">+</text>
+          <text x="120" y="45" font-size="20" fill="#d1494b" text-anchor="middle" font-weight="700">−</text>
+          <text x="120" y="185" font-size="13" text-anchor="middle" class="svg-ink" font-weight="700">ON中心型</text>
+          <!-- OFF-center -->
+          <circle cx="360" cy="95" r="62" fill="var(--accent)" opacity="0.16" stroke="var(--accent)" stroke-width="1.5"/>
+          <circle cx="360" cy="95" r="30" fill="#d1494b" opacity="0.85"/>
+          <text x="360" y="103" font-size="26" fill="#fff" text-anchor="middle" font-weight="700">−</text>
+          <text x="360" y="45" font-size="20" fill="var(--accent)" text-anchor="middle" font-weight="700">+</text>
+          <text x="360" y="185" font-size="13" text-anchor="middle" class="svg-ink" font-weight="700">OFF中心型</text>
+        </svg>
+        <figcaption>ON中心型＝中心の光で興奮(+)・周辺で抑制(−)。OFF中心型はその逆。中心と周辺で拮抗する＝側抑制の基盤。</figcaption>
+      </figure>
     </section>
 
     <section class="block">
       <h3>7. 視覚経路（visual pathway）★重要</h3>
-      <div class="flow">視神経 → 視交叉 → <b>外側膝状体 (LGN)</b> → <b>一次視覚野 (V1)</b> → 高次視覚野</div>
+      <figure class="fig">
+        <svg viewBox="0 0 560 180" role="img" aria-label="視覚経路の図">
+          <!-- eyes -->
+          <circle cx="45" cy="60" r="18" fill="none" class="s-stroke" stroke-width="2"/>
+          <circle cx="45" cy="60" r="6" class="svg-soft"/>
+          <circle cx="45" cy="120" r="18" fill="none" class="s-stroke" stroke-width="2"/>
+          <circle cx="45" cy="120" r="6" class="svg-soft"/>
+          <text x="45" y="155" font-size="11" text-anchor="middle" class="svg-faint">両眼</text>
+          <!-- to chiasm: nasal crosses -->
+          <line x1="63" y1="60" x2="185" y2="120" class="s-accent" stroke-width="2"/>
+          <line x1="63" y1="120" x2="185" y2="60" class="s-accent" stroke-width="2"/>
+          <line x1="63" y1="55" x2="185" y2="55" class="s-stroke" stroke-width="1.5"/>
+          <line x1="63" y1="125" x2="185" y2="125" class="s-stroke" stroke-width="1.5"/>
+          <text x="120" y="30" font-size="12" text-anchor="middle" class="svg-ink" font-weight="700">視交叉</text>
+          <text x="120" y="100" font-size="9" text-anchor="middle" class="svg-faint">鼻側は交叉</text>
+          <!-- LGN -->
+          <rect x="200" y="70" width="90" height="40" rx="8" fill="var(--accent-soft)" class="s-accent" stroke-width="1.5"/>
+          <text x="245" y="88" font-size="12" text-anchor="middle" class="svg-ink" font-weight="700">LGN</text>
+          <text x="245" y="102" font-size="9" text-anchor="middle" class="svg-faint">外側膝状体</text>
+          <line x1="185" y1="90" x2="200" y2="90" class="s-accent" stroke-width="2"/>
+          <!-- V1 -->
+          <line x1="290" y1="90" x2="330" y2="90" class="s-accent" stroke-width="2"/>
+          <polygon points="330,90 322,86 322,94" fill="var(--accent)"/>
+          <rect x="335" y="70" width="90" height="40" rx="8" fill="var(--accent-soft)" class="s-accent" stroke-width="1.5"/>
+          <text x="380" y="88" font-size="12" text-anchor="middle" class="svg-ink" font-weight="700">V1</text>
+          <text x="380" y="102" font-size="9" text-anchor="middle" class="svg-faint">一次視覚野</text>
+          <!-- higher -->
+          <line x1="425" y1="90" x2="465" y2="90" class="s-accent" stroke-width="2"/>
+          <polygon points="465,90 457,86 457,94" fill="var(--accent)"/>
+          <rect x="470" y="70" width="80" height="40" rx="8" fill="none" class="s-stroke" stroke-width="1.5"/>
+          <text x="510" y="88" font-size="11" text-anchor="middle" class="svg-ink" font-weight="700">高次</text>
+          <text x="510" y="102" font-size="9" text-anchor="middle" class="svg-faint">視覚野</text>
+        </svg>
+        <figcaption>視神経 → 視交叉(鼻側だけ交叉) → LGN(視床) → V1(後頭葉) → 高次視覚野。</figcaption>
+      </figure>
       <ul>
         <li><span class="term">視交叉</span>：網膜<strong>内側（鼻側）</strong>は交叉して反対側へ／<strong>外側（耳側）</strong>は交叉せず同側へ。</li>
         <li><strong>LGN</strong>＝背側核。視床の一部。<strong>V1</strong>＝後頭葉。</li>
@@ -449,6 +602,56 @@
           <tr><td>神経節細胞以降</td><td><strong>反対色説</strong>（赤↔緑・青↔黄・白↔黒）</td></tr>
         </tbody>
       </table></div>
+      <figure class="fig">
+        <svg viewBox="0 0 590 300" role="img" aria-label="錐体と桿体の吸収スペクトル">
+          <!-- axes -->
+          <line x1="70" y1="250" x2="565" y2="250" class="s-stroke" stroke-width="1.5"/>
+          <line x1="70" y1="40" x2="70" y2="250" class="s-stroke" stroke-width="1.5"/>
+          <text x="317" y="288" font-size="12" text-anchor="middle" class="svg-soft">波長 (nm)</text>
+          <text x="24" y="145" font-size="12" class="svg-soft" transform="rotate(-90 24 145)">相対吸光量</text>
+          <g font-size="10" class="svg-faint" text-anchor="middle">
+            <text x="111" y="266">400</text><text x="214" y="266">450</text>
+            <text x="318" y="266">500</text><text x="421" y="266">550</text><text x="524" y="266">600</text>
+          </g>
+          <!-- curves -->
+          <polyline fill="none" stroke="#3b6fd6" stroke-width="2.5" points="70,184 82,160 95,132 107,104 120,79 132,60 144,49 157,49 169,60 181,79 194,104 206,132 218,160 231,184 243,205 256,220 268,232 280,239 293,244 305,247 318,248 330,249 342,250 355,250 367,250 379,250 392,250 404,250 416,250 429,250 441,250 454,250 466,250 478,250 491,250 503,250 516,250 528,250 540,250 553,250 565,250"/>
+          <polyline fill="none" stroke="#8a8f9c" stroke-width="2" stroke-dasharray="5 3" points="70,249 82,249 95,248 107,247 120,245 132,242 144,237 157,231 169,223 181,212 194,198 206,181 218,163 231,142 243,120 256,99 268,80 280,64 293,54 305,48 318,49 330,57 342,69 355,86 367,106 379,127 392,149 404,169 416,187 429,203 441,216 454,226 466,233 478,239 491,243 503,246 516,247 528,248 540,249 553,250 565,250"/>
+          <polyline fill="none" stroke="#2f9e5b" stroke-width="2.5" points="70,250 82,250 95,250 107,250 120,250 132,250 144,249 157,249 169,248 181,247 194,244 206,241 218,236 231,230 243,221 256,210 268,195 280,178 293,159 305,138 318,117 330,96 342,77 355,62 367,52 379,48 392,50 404,58 416,72 429,89 441,110 454,131 466,152 478,172 491,190 503,205 516,218 528,227 540,234 553,240 565,243"/>
+          <polyline fill="none" stroke="#d1494b" stroke-width="2.5" points="70,250 82,250 95,250 107,250 120,250 132,250 144,250 157,250 169,250 181,250 194,249 206,249 218,248 231,246 243,244 256,240 268,236 280,229 293,221 305,210 318,197 330,182 342,164 355,144 367,124 379,104 392,85 404,69 416,57 429,50 441,48 454,52 466,61 478,74 491,91 503,111 516,131 528,151 540,170 553,187 565,202"/>
+          <!-- peak labels -->
+          <g font-size="10" font-weight="700" text-anchor="middle">
+            <text x="150" y="40" fill="#3b6fd6">青419</text>
+            <text x="300" y="40" fill="#8a8f9c">桿体496</text>
+            <text x="381" y="40" fill="#2f9e5b">緑531</text>
+            <text x="452" y="40" fill="#d1494b">赤559</text>
+          </g>
+        </svg>
+        <figcaption>錐体3種(S青419・M緑531・L赤559 nm)と桿体(496 nm)の吸収ピーク。数値はピーク波長。</figcaption>
+      </figure>
+      <figure class="fig">
+        <svg viewBox="0 0 500 210" role="img" aria-label="3原色から反対色への変換">
+          <!-- cones -->
+          <text x="80" y="24" font-size="11" text-anchor="middle" class="svg-faint">視細胞（3原色説）</text>
+          <circle cx="80" cy="55" r="16" fill="#d1494b"/><text x="112" y="60" font-size="12" class="svg-ink">L・赤</text>
+          <circle cx="80" cy="105" r="16" fill="#2f9e5b"/><text x="112" y="110" font-size="12" class="svg-ink">M・緑</text>
+          <circle cx="80" cy="155" r="16" fill="#3b6fd6"/><text x="112" y="160" font-size="12" class="svg-ink">S・青</text>
+          <!-- arrows -->
+          <g class="s-stroke" stroke-width="1.5">
+            <line x1="175" y1="70" x2="300" y2="55"/><line x1="175" y1="90" x2="300" y2="55"/>
+            <line x1="175" y1="110" x2="300" y2="110"/><line x1="175" y1="150" x2="300" y2="110"/>
+            <line x1="175" y1="60" x2="300" y2="165"/><line x1="175" y1="160" x2="300" y2="165"/>
+          </g>
+          <!-- opponent channels -->
+          <text x="390" y="24" font-size="11" text-anchor="middle" class="svg-faint">神経節細胞（反対色説）</text>
+          <rect x="305" y="40" width="150" height="30" rx="6" fill="var(--amber-soft)" class="s-stroke" stroke-width="1"/>
+          <text x="380" y="60" font-size="12" text-anchor="middle" class="svg-ink" font-weight="700">赤 ↔ 緑</text>
+          <rect x="305" y="95" width="150" height="30" rx="6" fill="var(--accent-soft)" class="s-stroke" stroke-width="1"/>
+          <text x="380" y="115" font-size="12" text-anchor="middle" class="svg-ink" font-weight="700">青 ↔ 黄</text>
+          <rect x="305" y="150" width="150" height="30" rx="6" fill="none" class="s-stroke" stroke-width="1"/>
+          <text x="380" y="170" font-size="12" text-anchor="middle" class="svg-ink" font-weight="700">白 ↔ 黒（明暗）</text>
+        </svg>
+        <figcaption>視細胞は3原色で受容し、神経節細胞以降で3つの反対色ペアの信号に変換される。</figcaption>
+      </figure>
     </section>
 
     <section class="block">
