@@ -1,3 +1,7 @@
 pages/
 extracted/
 *.pdf
+scratch*.png
+scratch*.json
+scratch*.txt
+scratchpad_*
